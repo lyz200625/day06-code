@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>学生注册表单</title>
+        <!-- 新 Bootstrap5 核心 CSS 文件 -->
+        <link rel="stylesheet" href="https://cdn.staticfile.net/twitter-bootstrap/5.1.1/css/bootstrap.min.css">
+         
+        <!-- 最新的 Bootstrap5 核心 JavaScript 文件 -->
+        <script src="https://cdn.staticfile.net/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
+        <style>
+            #cjx{
+                text-align: center;
+            }
+            #firstname, #phone, #youxiang, #mima, #queren{
+                width: 450px;
+            }
+			#jj{
+				width: 450px;
+			}
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1 id="cjx">学生注册表单</h1>
+            <div>
+                <form>
+                    <div class="mb-3">
+                        姓名*
+                        <input id="firstname" class="form-control" placeholder="请输入昵称,3-8个字符,可以是汉字或字母或数字">
+                    </div>
+                    <div class="mb-3">
+                        手机号*
+                        <input id="phone" class="form-control" type="text" placeholder="请输入11位手机号">
+                    </div>
+                    <div class="mb-3">
+                        <label for="youxiang">邮箱*</label>
+                        <br>
+                        <input class="form-control" id="youxiang" type="text" placeholder="可选,如:student@school.com">
+                    </div>
+                    <div class="mb-3">
+                        密码*
+                        <input id="mima" class="form-control" type="text" placeholder="至少六位,包含数字和字母">
+                    </div>
+                    <div class="mb-3">
+                        确认密码*
+                        <input id="queren" class="form-control" type="text" placeholder="请再次输入密码">
+                    </div>
+                    <input id="jj" type="button" value="注册" onclick="checkForm()">
+                </form>
+            </div>    
+        </div>
+    </body>
+    <script>
+        function checkForm(){
+            let firstname = document.getElementById("firstname");
+            let nameReg = /^[A-Za-z0-9\u4e00-\u9fa5]{3,8}$/;
+            if(nameReg.test(firstname.value)){
+            }else{
+                alert(firstname.placeholder);
+                return false;
+            }
+            let phone = document.getElementById("phone");
+            let phoneReg = /^[0-9]{11}$/;
+            if(phoneReg.test(phone.value)){
+            }else{
+                alert(phone.placeholder);
+                return false;
+            }
+            let youxiang = document.getElementById("youxiang");
+            let youxiangReg = /^(?:|^[A-Za-z0-9_]+@[A-Za-z0-9-]+\.[A-Za-z0-9]+$)$/;
+            if(youxiangReg.test(youxiang.value)){
+            }else{
+                alert(youxiang.placeholder);
+                return false;
+            }
+            let mima = document.getElementById("mima");
+            let mimaReg = /^[A-Za-z0-9]{6,20}$/;
+            if(mimaReg.test(mima.value)){
+            }else{
+                alert(mima.placeholder);
+                return false;
+            }
+            let queren = document.getElementById("queren");
+            if(queren.value != mima.value){
+                alert("两次输入的密码不一致，请重新输入");
+                return false;
+            }else{
+                alert("注册成功！");
+            }
+        }
+    </script>
+</html>
